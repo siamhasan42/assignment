@@ -10,7 +10,8 @@
 
 .container {
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 /* headr st  */
@@ -573,3 +574,45 @@
 
 /* missing section en  */
 
+/* footer section st */
+
+
+.footer {
+  background: #0D1B2A;
+  padding: 35px 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-left img {
+  width: 120px;
+}
+
+.footer-left p {
+  color: #a2afc2;
+  font-size: 15px;
+}
+
+.footer ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.footer ul li a {
+  text-decoration: none;
+  color: #a2afc2;
+}
+
+
+/* footer section en */
