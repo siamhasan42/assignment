@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Registration Form</title>
+    <!-- ফন্ট এবং আইকনের জন্য সিডিএন (CDN) -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* মূল ব্যাকগ্রাউন্ড সম্পূর্ণ ক্লিয়ার সাদা */
+        body {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #0f172a;
+            padding: 24px;
+            overflow-x: hidden;
+        }
+
+        /* ফর্ম কন্টেইনার এবং এন্ট্রি অ্যানিমেশন */
+        .form-wrapper {
+            width: 100%;
+            max-width: 520px;
+            background: #ffffff;
+            padding: 45px 40px;
+            border-radius: 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.01);
+            border: 1px solid #f1f5f9;
+            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* হেডার সেকশন */
+        .form-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .form-header .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #eff6ff;
+            color: #2563eb;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 100px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-header h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .form-header p {
+            font-size: 15px;
+            color: #64748b;
+        }
+
+        /* ইনপুট গ্রুপ ও আইকন লেআউট */
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .input-group {
+            margin-bottom: 22px;
+            position: relative;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #334155;
+        }
+
+        .input-field-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        /* ইনপুটের ভেতরের আইকন */
+        .input-field-wrapper i.input-icon {
+            position: absolute;
+            left: 16px;
+            color: #94a3b8;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .input-field-wrapper input, 
+        .input-field-wrapper select {
+            width: 100%;
+            padding: 14px 16px 14px 48px;
+            font-size: 15px;
+            font-weight: 500;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 14px;
+            outline: none;
+            background-color: #f8fafc;
+            color: #0f172a;
+            transition: all 0.3s ease;
+        }
+
+        /* সিলেক্ট অপশনের জন্য ফিক্স */
+        .input-field-wrapper select {
+            appearance: none;
+            cursor: pointer;
+        }
+
+        /* ইনপুট ফোকাস স্টেট */
+        .input-field-wrapper input:focus,
+        .input-field-wrapper select:focus {
+            background-color: #ffffff;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .input-field-wrapper input:focus ~ i.input-icon {
+            color: #2563eb;
+        }
+
+        /* পাসওয়ার্ড শো/হাইড আইকন */
+        .password-toggle {
+            position: absolute;
+            right: 16px;
+            cursor: pointer;
+            color: #94a3b8;
+            transition: color 0.3s;
+        }
+        .password-toggle:hover {
+            color: #334155;
+        }
+
+        /* ফাইল আপলোড কাস্টম ডিজাইন */
+        .file-upload-wrapper {
+            position: relative;
+            width: 100%;
+            margin-bottom: 22px;
+        }
+        .file-upload-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px;
+            border: 1.5px dashed #cbd5e1;
+            border-radius: 14px;
+            background: #f8fafc;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: #64748b;
+            transition: all 0.3s;
+        }
+        .file-upload-label:hover {
+            border-color: #2563eb;
+            background: #eff6ff;
+            color: #2563eb;
+        }
+        .file-upload-wrapper input {
+            display: none;
+        }
+
+        /* চেকবক্স ডিজাইন */
+        .policy-agreement {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 30px;
+            font-size: 14px;
+            color: #475569;
+            cursor: pointer;
+            line-height: 1.4;
+        }
+
+        .policy-agreement input {
+            accent-color: #2563eb;
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            border-radius: 4px;
+        }
+
+        /* আল্ট্রা-মডার্ন বাটন */
+        .btn-submit-premium {
+            width: 100%;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #ffffff;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
+            background: linear-gradient(135deg, #1d4ed8, #1e40af);
+        }
+
+        .btn-submit-premium:active {
+            transform: translateY(0);
+        }
+
+        /* ফুটার লিঙ্ক */
+        .form-footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .form-footer a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.2s;
+        }
+
+        .form-footer a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        /* রেসপনসিভনেস (মোবাইলের জন্য) */
+        @media (max-width: 480px) {
+            .input-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .form-wrapper {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-wrapper">
+        <div class="form-header">
+            <span class="badge">Start for free</span>
+            <h2>Create Account</h2>
+            <p>Get started with your premium dashboard today.</p>
+        </div>
+
+        <form action="#">
+            <!-- ফার্স্ট নেম ও লাস্ট নেম একসাথে পাশাপাশি থাকবে -->
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="fname">First Name</label>
+                    <div class="input-field-wrapper">
+                        <i class="fa-regular fa-user input-icon"></i>
+                        <input type="text" id="fname" placeholder="John" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="lname">Last Name</label>
+                    <div class="input-field-wrapper">
+                        <i class="fa-regular fa-user input-icon"></i>
+                        <input type="text" id="lname" placeholder="Doe" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ইমেইল ফিল্ড -->
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <div class="input-field-wrapper">
+                    <i class="fa-regular fa-envelope input-icon"></i>
+                    <input type="email" id="email" placeholder="john@example.com" required>
+                </div>
+            </div>
+
+            <!-- রোল/অপশন সিলেক্ট (ড্রপডাউন) -->
+            <div class="input-group">
+                <label for="role">Join As</label>
+                <div class="input-field-wrapper">
+                    <i class="fa-solid fa-briefcase input-icon"></i>
+                    <select id="role" required>
+                        <option value="" disabled selected>Select your role</option>
+                        <option value="developer">Developer / Designer</option>
+                        <option value="business">Business Owner</option>
+                        <option value="student">Student</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- পাসওয়ার্ড ফিল্ড উইথ আইকন -->
+            <div class="input-group">
+                <label for="password">Password</label>
+                <div class="input-field-wrapper">
+                    <i class="fa-solid fa-lock input-icon"></i>
+                    <input type="password" id="password" placeholder="At least 8 characters" required>
+                    <i class="fa-regular fa-eye-slash password-toggle" onclick="togglePassword()"></i>
+                </div>
+            </div>
+
+            <!-- প্রোফাইল পিকচার আপলোড অপশন -->
+            <div class="file-upload-wrapper">
+                <label class="file-upload-label" for="avatar">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <span>Upload Profile Picture (Optional)</span>
+                </label>
+                <input type="file" id="avatar" accept="image/*">
+            </div>
+
+            <!-- পলিসি এগ্রিমেন্ট -->
+            <label class="policy-agreement" for="agree">
+                <input type="checkbox" id="agree" required>
+                <span>I agree to the <a href="#" style="color:#2563eb; text-decoration:none; font-weight:600;">Terms of Service</a> and <a href="#" style="color:#2563eb; text-decoration:none; font-weight:600;">Privacy Policy</a>.</span>
+            </label>
+
+            <!-- আইকনসহ সাবমিট বাটন -->
+            <button type="submit" class="btn-submit-premium">
+                <span>Create Account</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </form>
+
+        <div class="form-footer">
+            Already have an account? <a href="#">Sign In</a>
+        </div>
+    </div>
+
+    <!-- পাসওয়ার্ড শো/হাইড করার ছোট্ট জাভাস্ক্রিপ্ট কোড -->
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.querySelector('.password-toggle');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            }
+        }
+    </script>
+</body>
+</html>
