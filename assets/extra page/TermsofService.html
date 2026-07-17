@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - DevConf 2026</title>
+    <style>
+        /* Core Styling & DevConf Theme */
+        :root {
+            --bg-main: #090d16;
+            --bg-card: rgba(30, 41, 59, 0.4);
+            --accent-cyan: #06b6d4;
+            --text-primary: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Section */
+        .tos-header {
+            text-align: center;
+            padding: 80px 0 40px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tos-header .badge {
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--accent-cyan);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tos-header h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin: 15px 0 10px 0;
+            background: linear-gradient(to right, #ffffff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tos-header p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* Layout */
+        .tos-layout {
+            display: flex;
+            gap: 50px;
+            margin-top: 50px;
+            position: relative;
+        }
+
+        /* Sidebar Styling (Sticky on Desktop) */
+        .tos-sidebar {
+            width: 280px;
+            position: sticky;
+            top: 40px;
+            height: fit-content;
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            padding: 24px;
+            border-radius: 12px;
+        }
+
+        .tos-sidebar h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: var(--accent-cyan);
+        }
+
+        .tos-sidebar ul {
+            list-style: none;
+        }
+
+        .tos-sidebar ul li {
+            margin-bottom: 12px;
+        }
+
+        .tos-sidebar ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+            display: block;
+        }
+
+        .tos-sidebar ul li a:hover,
+        .tos-sidebar ul li a.active {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Content Area Styling */
+        .tos-content {
+            flex: 1;
+        }
+
+        .tos-content section {
+            margin-bottom: 50px;
+            scroll-margin-top: 40px;
+            /* Gives spacing when jumping from sidebar links */
+        }
+
+        .tos-content h2 {
+            font-size: 22px;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 8px;
+        }
+
+        .tos-content p {
+            color: var(--text-muted);
+            font-size: 15px;
+            text-align: justify;
+        }
+
+        /* Bottom Footer Action */
+        .tos-footer-action {
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0 8px 0;
+            margin-top: 30px;
+        }
+
+        .tos-footer-action p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .tos-footer-action a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+        }
+
+        .tos-footer-action a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 992px) {
+            .tos-layout {
+                flex-direction: column;
+                /* Stack sidebar on top of content for tablets/mobiles */
+                gap: 30px;
+            }
+
+            .tos-sidebar {
+                width: 100%;
+                position: relative;
+                /* Remove sticky on mobile */
+                top: 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .tos-header h1 {
+                font-size: 32px;
+            }
+
+            .tos-content h2 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="tos-page">
+        <div class="container">
+
+            <header class="tos-header">
+                <span class="badge">Legal Document</span>
+                <h1>Terms of Service</h1>
+                <p>Last Updated: July 10, 2026</p>
+            </header>
+
+            <div class="tos-layout">
+
+                <aside class="tos-sidebar">
+                    <h3>Table of Contents</h3>
+                    <ul>
+                        <li><a href="#acceptance" class="active">1. Acceptance of Terms</a></li>
+                        <li><a href="#eligibility">2. Registration & Eligibility</a></li>
+                        <li><a href="#conduct">3. Code of Conduct</a></li>
+                        <li><a href="#intellectual">4. Intellectual Property</a></li>
+                        <li><a href="#cancellation">5. Tickets & Cancellation</a></li>
+                        <li><a href="#liability">6. Limitation of Liability</a></li>
+                    </ul>
+                </aside>
+
+                <article class="tos-content">
+
+                    <section id="acceptance">
+                        <h2>1. Acceptance of Terms</h2>
+                        <p>By registering for, attending, or accessing any digital platforms related to DevConf 2026
+                            ("the Event"), you agree to be bound by these Terms of Service. If you do not agree to these
+                            terms, please do not purchase a ticket or participate in the conference.</p>
+                    </section>
+
+                    <section id="eligibility">
+                        <h2>2. Registration & Eligibility</h2>
+                        <p>To attend DevConf 2026, you must provide accurate, current, and complete information during
+                            registration. Badges and tickets are strictly tied to the individual named during the
+                            checkout process and cannot be shared without prior written consent from the organizers.</p>
+                    </section>
+
+                    <section id="conduct">
+                        <h2>3. Code of Conduct</h2>
+                        <p>DevConf is dedicated to providing a harassment-free experience for everyone, regardless of
+                            gender, sexual orientation, disability, physical appearance, or religion. We do not tolerate
+                            harassment of conference participants in any form. Violations will result in expulsion from
+                            the event without a refund.</p>
+                    </section>
+
+                    <section id="intellectual">
+                        <h2>4. Intellectual Property</h2>
+                        <p>All materials presented, including presentations, slide decks, workshop code, and digital
+                            streaming content, are the intellectual property of DevConf 2026 and its respected speakers.
+                            Recording or broadcasting sessions for commercial reuse without explicit permission is
+                            strictly prohibited.</p>
+                    </section>
+
+                    <section id="cancellation">
+                        <h2>5. Tickets & Cancellation Policy</h2>
+                        <p>All ticket sales for DevConf 2026 are final. Refunds can be requested up to 30 days before
+                            the event kick-off date. In the case of event postponement or force majeure, tickets will
+                            automatically remain valid for the rescheduled dates.</p>
+                    </section>
+
+                    <section id="liability">
+                        <h2>6. Limitation of Liability</h2>
+                        <p>DevConf 2026 and its organizers shall not be held liable for any direct, indirect,
+                            incidental, or consequential damages resulting from your attendance at the conference,
+                            temporary downtime of virtual streaming portals, or loss of personal property during the
+                            physical event.</p>
+                    </section>
+
+                </article>
+
+            </div>
+
+            <footer class="tos-footer-action">
+                <p>Have questions about our terms? Contact our legal team at <a
+                    href="mailto:legal@devconf.org">shiamhasan42@gmail.com</a>
+                </p>
+            </footer>
+
+        </div>
+    </main>
+
+</body>
+
+</html>
